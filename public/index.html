@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Meet.js - A Simple Meeting Calendar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Meet.js</h1>
+  <h3>A Simple Meeting Calendar</h3>
+  
+  <div class="actions">
+    <a href="#" class="btn" id="add_new_button">+ Add New</a>
+  </div>
+
+  <div id="overlay">
+    <form action="#" method="post">
+      <div class="box_header">
+        Add New Meeting
+        <span class="close close_button">✖</span>
+      </div>
+      <div class="box_content">
+        <p id="error_message"></p>
+        <div class="form_group">
+          <label for="id">ID: </label>
+          <input type="text" name="new_meeting_id" id="new_meeting_id" autocomplete="off" />
+        </div>
+        <div class="form_group">
+          <label for="start">Time: </label>
+          <select name="start_time" id="start_time">
+            <option value="0">09:00 AM</option>
+            <option value="30">09:30 AM</option>
+            <option value="60">10:00 AM</option>
+            <option value="90">10:30 AM</option>
+            <option value="120">11:00 AM</option>
+            <option value="150">11:30 AM</option>
+            <option value="180">12:00 PM</option>
+            <option value="210">12:30 PM</option>
+            <option value="240">13:00 PM</option>
+            <option value="270">13:30 PM</option>
+            <option value="300">14:00 PM</option>
+            <option value="330">14:30 PM</option>
+            <option value="360">15:00 PM</option>
+            <option value="390">15:30 PM</option>
+            <option value="420">16:00 PM</option>
+            <option value="450">16:30 PM</option>
+            <option value="480">17:00 PM</option>
+            <option value="510">17:30 PM</option>
+            <option value="540">18:00 PM</option>
+            <option value="570">18:30 PM</option>
+            <option value="600">19:00 PM</option>
+            <option value="630">19:30 PM</option>
+            <option value="660">20:00 PM</option>
+            <option value="690">20:30 PM</option>
+          </select>       
+          <strong> - </strong>
+          <select name="end_time" id="end_time">
+            <option value="30">09:30 AM</option>
+            <option value="60">10:00 AM</option>
+            <option value="90">10:30 AM</option>
+            <option value="120">11:00 AM</option>
+            <option value="150">11:30 AM</option>
+            <option value="180">12:00 PM</option>
+            <option value="210">12:30 PM</option>
+            <option value="240">13:00 PM</option>
+            <option value="270">13:30 PM</option>
+            <option value="300">14:00 PM</option>
+            <option value="330">14:30 PM</option>
+            <option value="360">15:00 PM</option>
+            <option value="390">15:30 PM</option>
+            <option value="420">16:00 PM</option>
+            <option value="450">16:30 PM</option>
+            <option value="480">17:00 PM</option>
+            <option value="510">17:30 PM</option>
+            <option value="540">18:00 PM</option>
+            <option value="570">18:30 PM</option>
+            <option value="600">19:00 PM</option>
+            <option value="630">19:30 PM</option>
+            <option value="660">20:00 PM</option>
+            <option value="690">20:30 PM</option>
+            <option value="720">21:00 PM</option>
+          </select>
+        </div>
+        <div class="form_group">
+          <label for="id">Color: </label>
+          <span class="color green selected_color"  data-hex="#83C6B6"></span>
+          <span class="color red"    data-hex="#DC143C"></span>
+          <span class="color blue"   data-hex="#1414EE"></span>
+          <span class="color yellow" data-hex="#C7C732"></span>
+          <span class="color orange" data-hex="#C75E32"></span>
+          <span class="color pink"   data-hex="#C732C7"></span>
+          <span class="color purple" data-hex="#551a8b"></span>
+
+          <input type="hidden" name="color" id="color" value="#83C6B6" />
+        </div>
+      </div>
+      <div class="box_footer">
+        <input id="add_meeting_button" type="button" value="Save" class="btn primary"  />
+        <input type="button" value="Cancel" class="btn close_button" />
+      </div>
+    </form>
+  </div>
+
+  <canvas id="calendar_canvas" width="700" height="1500">
+    <p>Your browser doesn’t currently support HTML5 Canvas. 
+      Please check caniuse.com/#feat=canvas for information on 
+      browser support for canvas.</p>
+  </canvas>
+  
+  <script src="../src/array-helper.js"></script>  
+  <script src="../src/time-helper.js"></script>
+  <script src="../src/meeting.js"></script>
+  <script src="../src/html-helper.js"></script>
+  <script src="../src/scripts.js"></script>
+  <script type="text/javascript">
+    new HtmlHelper().createEventListeners();
+    var meetingObject = new Meeting();
+    meetingObject.clearDataStorage();
+    let arrMeetings = [
+      { id: "New", start: 60, end: 120 },
+      { id: "New 1", start: 150, end: 270 },
+      { id: "New 2", start: 240, end: 300 },
+      { id: "New 3", start: 200, end: 360 },
+      { id: "New 4", start: 180, end: 330 },
+    ];
+    populateCanvas(arrMeetings);
+    meetingObject.save(arrMeetings);
+  </script>
+</body>
+</html>

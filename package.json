@@ -1,0 +1,7 @@
+{
+  "name": "meeting-calendar",
+  "version": "1.0.0",
+  "description": "A simple & pure JS meeting calendar",
+  "author": "Pezhman Parsaee (p.parsaee@gmail.com)",
+  "license": "ISC"
+}
